@@ -15,9 +15,9 @@ $(document).ready(function(){
 
 	/*Create Editor*/
 	var editor = ace.edit("editor");
-	editor.setFontSize(18);
 	editor.setTheme("ace/theme/monokai");
 	editor.getSession().setMode("ace/mode/python");
+	editor.setFontSize(18);
 
 	editor.getSession().getDocument().insertLines(0,"# Type Code here,print 'Hello, World!'");
 
