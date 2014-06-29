@@ -11,7 +11,7 @@
 <!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
 <script src="/static/js/ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
-$(documennt).ready(function(
+$(document).ready(function(){
 
 	/*Create Editor*/
 	var editor = ace.edit("editor");
@@ -21,6 +21,6 @@ $(documennt).ready(function(
 
 	editor.getSession().getDocument().insertLines(0,"# Type Code here,print 'Hello, World!'");
 
-));
+});
 </script>
 </html>
