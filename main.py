@@ -3,7 +3,7 @@ from flask import render_template
 import subprocess
 import random
 
-app = Flask(__name__, static_url_path = "static")
+app = Flask(__name__, static_url_path = "")
 
 @app.route("/")
 def hello():
