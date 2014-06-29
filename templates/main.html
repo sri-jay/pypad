@@ -2,14 +2,33 @@
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<!-- {{ url_for('static',filename='css/styles.css') }} -->
+
+	<!-- Semantic UI -->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/javascript/semantic.min.js"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/css/semantic.min.css" rel="stylesheet">
+	
+	<!-- Custom CSS -->
 	<link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}" ></link>
+	
 </head>
 <body>
+
+	<!-- Input and output areas -->
 	<div id='editor'>
 	</div>
 	<div id="output">
 	</div>
+
+	<!-- Buttons -->
+	<div class="ui vertical right labeled icon small buttons" style="z-index:200;position:fixed;top:50%;right:4%">
+	    <div class="ui green button" id="run">
+	        <p>Run!</p>
+	        <i class="icon play"></i>
+	    </div>
+	</div>
+	<!-- End Buttons -->
+
 </body>
 <!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
 <!-- {{ url_for('static',filename='js/ace-src-min-noconflict/ace.js')}} -->
