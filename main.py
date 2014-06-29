@@ -18,7 +18,7 @@ def run_code():
 
 		print code
 		#write code to file
-		os.chdir("E:/pypad2/")
+		#os.chdir("E:/pypad2/")
 		temp = open("temp.py","w")
 		temp.write(code)
 		temp.close()
