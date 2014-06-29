@@ -18,7 +18,8 @@ def run_code():
 
 		print code
 		#write code to file
-		os.chdir("/app/")
+		os.chdir("/app")
+		print os.getcwd()
 		temp = open("temp.py","w")
 		temp.write(code)
 		temp.close()
