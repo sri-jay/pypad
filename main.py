@@ -39,6 +39,3 @@ def run_code():
 		return jsonify( {'STDOUT' : program_output,'STDERR' : program_error})
 
 
-if __name__ == "__main__":
-	app.run()
-
