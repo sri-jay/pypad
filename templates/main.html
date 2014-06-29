@@ -8,6 +8,8 @@
 <body>
 	<div id='editor'>
 	</div>
+	<div id="output">
+	</div>
 </body>
 <!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
 <!-- {{ url_for('static',filename='js/ace-src-min-noconflict/ace.js')}} -->
@@ -19,7 +21,7 @@ $(document).ready(function(){
 	var editor = ace.edit("editor");
 	editor.setTheme("ace/theme/monokai");
 	editor.getSession().setMode("ace/mode/python");
-	editor.setFontSize(20);
+	editor.setFontSize(18);
 	editor.getSession().getDocument().insertLines(0,["# Type Code here","print 'Hello, World!'"]);
 
 });
