@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</head>
+<body>
+	<div id="editor">
+	</div>
+</body>
+<!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
+<script src="/ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(documennt).ready(function(
+
+	/*Create Editor*/
+	var editor = ace.edit("editor");
+	editor.setFontSize(18);
+	editor.setTheme("ace/theme/monokai");
+	eitor.getSession().setMode("ace/mode/python");
+
+	editor.getSession().getDocument().insertLines(0,"# Type Code here,print 'Hello, World!'");
+
+));
+</script>
+</html>
