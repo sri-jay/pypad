@@ -9,7 +9,7 @@
 	</div>
 </body>
 <!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
-<script src="/static/js/ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="../static/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
 $(document).ready(function(){
 
@@ -17,7 +17,7 @@ $(document).ready(function(){
 	var editor = ace.edit("editor");
 	editor.setFontSize(18);
 	editor.setTheme("ace/theme/monokai");
-	eitor.getSession().setMode("ace/mode/python");
+	editor.getSession().setMode("ace/mode/python");
 
 	editor.getSession().getDocument().insertLines(0,"# Type Code here,print 'Hello, World!'");
 
