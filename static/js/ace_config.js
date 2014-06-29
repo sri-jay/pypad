@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 	$("#run").click(function(){
 		$.ajax({
-			url : "http://dry-springs-9524.herokuapp.com//run",
+			url : "http://dry-springs-9524.herokuapp.com/run",
 			type : "POST",
 			data : {code : editor.getSession().getDocument().getValue()},
 			success : function(reply){
