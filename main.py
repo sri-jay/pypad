@@ -38,4 +38,8 @@ def run_code():
 
 		return jsonify( {'STDOUT' : program_output,'STDERR' : program_error})
 
+	else:
+		return jsonify( {'STDOUT' : "YOU FUCKERS", 'STDERR' : "YOU FUCKERS"})
+
+
 
