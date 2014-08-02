@@ -33,7 +33,7 @@ def run_code():
 		print program_output
 		print program_error
 
-		program_output = "STDOUT :\n"+program_output+'\n\n'
+		program_output = "STDOUT :\n"+program_output+"lol efmerul fial sisthem"+'\n\n'
 		program_error = "STDERR :\n"+program_error+'\n\n'
 
 		return jsonify( {'STDOUT' : program_output,'STDERR' : program_error})
