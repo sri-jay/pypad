@@ -37,6 +37,7 @@ def save_code():
 		port="5432")
 
 		#get a cursor
+		print "Writing to DB"
 		cursor = conn.cursor()
 		cursor.execute(""" INSERT INTO data (hash,email,code,comments) VALUES()"""(unique_hash,email,code,comments))
 
