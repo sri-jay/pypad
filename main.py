@@ -2,44 +2,52 @@ from flask import Flask, render_template, request, jsonify, make_response
 from subprocess import Popen, PIPE, STDOUT
 import os
 import random
+import hashlib
+import psycopg2
 
 app = Flask(__name__, static_url_path = "")
 
 @app.route("/")
 def hello():
 	data = random.random()
-	return render_template('main.html')
+	return render_template('home.html')
 
-@app.route("/run",methods=['POST'])
-def run_code():
-	#check the request method
-	if request.method == 'POST':
-		code = request.form['code']
+@app.route("/code")
+def code():
+	print "here"
+	print random.random()
+	unique_hash = str(hashlib.sha224(str(random.random())).hexdigest())
+	return render_template('main.html',url=unique_hash)
 
-		print code
-		#write code to file
-		#os.chdir("/app")
-		temp = open("temp.py","w")
-		temp.write(code)
-		temp.close()
+@app.route("/save",methods=['POST'])
+def save_code():
+	code = request.form['CODE']
+	email = request.form['EMAIL']
+	comments = request.form['COMMENTS']
+	unique_hash = request.form['HASH']
 
-		#run the code 
-		#stdout and std err are [0] and [1] in pipe
-		input_pipe = Popen('python temp.py',stdout=PIPE,stderr=PIPE,shell=False)
+	print code,email,comments,unique_hash
 
-		#fetch stdout
-		program_output, program_error = input_pipe.communicate()
+	try:
+		conn = psycopg2.connect(
+		database="dhgab48kaqk79",
+		user="wgciyahtsvsaxi",
+		password="8NIfTLHTetrg_xYjwmA_LKr36w",
+		host="ec2-54-225-135-30.compute-1.amazonaws.com",
+		port="5432")
 
-		print program_output
-		print program_error
+		#get a cursor
+		cursor = conn.cursor()
+		cursor.execute(""" INSERT INTO data (hash,email,code,comments) VALUES()"""(unique_hash,email,code,comments))
 
-		program_output = "STDOUT :\n"+program_output+"lol efmerul fial sisthem"+'\n\n'
-		program_error = "STDERR :\n"+program_error+'\n\n'
+		return jsonify({'STATUS' : 'TRUE'})
 
-		return jsonify( {'STDOUT' : program_output,'STDERR' : program_error})
-
-	else:
-		return jsonify( {'STDOUT' : "YOU FUCKERS", 'STDERR' : "YOU FUCKERS"})
+	except:
+		print "Connection Failed,Informing client"
+		return jsonify({'STATUS' ; 'FALSE'})
 
 
+
+if __name__ == "__main__":
+	app.run()
 

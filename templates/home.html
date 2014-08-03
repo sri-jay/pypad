@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.min.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.min.js"></script>
+	<style>
+	body
+	{
+		font-family: "sans-serif"
+		margin: 0;
+		background: url("img/a.gif");
+		background-size: 120%;
+		background-repeat: no-repeat;
+		background-position: top;
+	}
+	.container{
+		width:70%;
+		margin-left:15%;
+		margin-right:15%;
+	}
+	#main-advert
+	{
+		font-family: "consolas";
+		text-align: center;
+		font-size: 250px;
+		margin-top:10%;
+		color:white;
+		-webkit-animation:title-animation 10s ease-in;
+		
+	}
+	#go,hr{
+		-webkit-animation:go-animation 15s ease-out;
+	}
+
+	@-webkit-keyframes go-animation{
+		from{
+			-webkit-filter:blur(200px);
+		}
+		to{
+			-webkit-filter:blur(0);
+		}
+	}
+	@-webkit-keyframes title-animation
+	{
+		from{
+			-webkit-filter:blur(100px);
+			-webkit-box-shadow: 500px 10px 500px 500px rgba(255, 255, 255, 3);
+		}
+		to{
+			-webkit-filter:blur(0);
+		}
+	}
+	@-webkit-keyframes move{
+		from{
+			margin-top: 10%;
+		}
+		to{
+			margin-top: 3%;
+		}
+	}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="main-advert" align="center" >PyPad</div>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<br>
+		<a href="http://127.0.0.1:5000/code"><div class="fluid orange massive ui button" id="go"><code>Go</code></div></a>
+
+	</div>
+</body>
+</html>

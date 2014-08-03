@@ -6,12 +6,29 @@
 	left: 0;
 	width : 50%;
 	float :left;
+	font-family: "Courier";
 }
-#output
+#stdout
 {
-	height:100%;
-	width:50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 50%;
+	width : 50%;
 	float :right;
+	font-family: "Courier";
+}
+#stdcanvas
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 100%;
+	width : 50%;
+	float :right;
+	font-family: "Courier";
 }
 
 #run:hover
@@ -19,19 +36,21 @@
 	background-color: green;
 	color:white;
 }
+#code:hover{
+	background-color: red;
+	color:white;
+}
+#canvas:hover
+{
+	background-color: orange;
+	color:white;
+}
+#toggle_sidebar:hover
+{
+	background-color: DeepPink;
+	color:white;
+}
 
-.STDOUT
-{
-	color:green;
-	padding-top:3px;
-	padding-botton:2px;
-}
-.STDERR
-{
-	color:red;
-	padding-top:3px;
-	padding-botton:2px;
-}
 
 body
 {
