@@ -4,6 +4,7 @@ import os
 import random
 import hashlib
 import psycopg2
+import json
 
 app = Flask(__name__, static_url_path = "")
 
@@ -21,10 +22,10 @@ def code():
 
 @app.route("/save",methods=['POST'])
 def save_code():
-	code = str(request.form['CODE'])
-	email = str(request.form['EMAIL'])
-	comments = str(request.form['COMMENTS'])
-	unique_hash = str(request.form['HASH'])
+	code = json.dumps(request.form['CODE'])
+	email = json.dumpd(request.form['EMAIL'])
+	comments = json.dumps(request.form['COMMENTS'])
+	unique_hash = json.dump(request.form['HASH'])
 
 	STATUS = "TRUE"
 	try:
@@ -38,7 +39,7 @@ def save_code():
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
-		query =  """INSERT INTO data (hash,email,code,comments) VALUES(\'%s\',\'%s\',\'%s\',\'%s\');"""%(unique_hash,email,code,comments)
+		query =  """INSERT INTO data (hash,email,code,comments) VALUES(%s,%s,%s,%s);"""%(unique_hash,email,code,comments)
 		print query
 		cursor.execute(query)
 
