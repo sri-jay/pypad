@@ -2,15 +2,15 @@ $(document).ready(function(){
 
 	/*Create Editor*/
 	var editor = ace.edit("editor");
-	editor.setTheme("ace/theme/monokai");
+	editor.setTheme("ace/theme/solarized_dark");
 	editor.getSession().setMode("ace/mode/python");
 	editor.setFontSize(14);
 	editor.getSession().getDocument().insertLines(0,["# Type Code here","print 'Hello, World!'"]);
 
 
 	var stdout = ace.edit("stdout");
-	stdout.setTheme("ace/theme/terminal");
-	stdout.getSession().setMode("ace/mode/Plain Text");
+	stdout.setTheme("ace/theme/solarized_light");
+	stdout.getSession().setMode("ace/mode/plain_text");
 	stdout.setFontSize(14);
 	stdout.setReadOnly(true);
 	var pos = 0;
