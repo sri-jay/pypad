@@ -40,8 +40,8 @@ def save_code():
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
-		print "INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"%(unique_hash,email,code,comments)
-		cursor.execute("INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"%(unique_hash,email,code,comments))
+		query =  "INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"%(unique_hash,email,code,comments)
+		cursor.execute(query)
 
 	except:
 		print "Connection Failed,Informing client"
