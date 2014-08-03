@@ -8,7 +8,7 @@ $("#save").click(function(){
 	$.ajax({
 		url : "http://dry-springs-9524.herokuapp.com/save",
 		type : "POST",
-		data : {CODE : code,HASH:unique_hash,EMAIL;email,COMMENTS:comments},
+		data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 		success : function(reply){
 			if(reply['STATUS'] != 'TRUE'){
 				alert("Failer to enter data to DB");
