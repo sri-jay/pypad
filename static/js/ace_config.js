@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 
 	$("#save").click(function(){
-		var code = editor.getSession().getDocument().getValue();
+		var code = editor.getSession().getDocument().getAllLines().toString();
 		var unique_hash = $("#hash").val();
 		var email = $("#email").val();
 		var comments = $("#comments").val();
@@ -78,7 +78,7 @@ $(document).ready(function(){
 		console.log(comments);
 
 		$.ajax({
-			url : "http://dry-springs-9524.herokuapp.com/save",
+			url : "http://127.0.0.1:5000/save",
 			type : "POST",
 			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 			success : function(reply){

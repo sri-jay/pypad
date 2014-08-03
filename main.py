@@ -5,6 +5,7 @@ import random
 import hashlib
 import psycopg2
 import json
+import urlparse
 
 app = Flask(__name__, static_url_path = "")
 
@@ -22,12 +23,23 @@ def code():
 
 @app.route("/save",methods=['POST'])
 def save_code():
-	code = json.dumps(request.form['CODE'])
-	email = json.dumpd(request.form['EMAIL'])
-	comments = json.dumps(request.form['COMMENTS'])
-	unique_hash = json.dump(request.form['HASH'])
+	_code_ = request.form['CODE']
+	_email_ = request.form['EMAIL']
+	_comments_ = request.form['COMMENTS']
+	_unique_hash_ = request.form['HASH']
 
+	_code_ = _code_.replace("'","\"")
+
+	print _code_
+	print _email_
+	print _comments_
+	print _unique_hash_
+
+	#query =  """INSERT INTO data (hash,email,code,comments) VALUES(%s,%s,%s,%s);"""%(unique_hash,email,code,comments)
 	STATUS = "TRUE"
+	print "\n"
+	#print query
+	print "\n"
 	try:
 		conn = psycopg2.connect(
 		database="dhgab48kaqk79",
@@ -39,18 +51,20 @@ def save_code():
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
-		query =  """INSERT INTO data (hash,email,code,comments) VALUES(%s,%s,%s,%s);"""%(unique_hash,email,code,comments)
+		query =  """INSERT INTO data VALUES(\'%s\',\'%s\',\'%s\',\'%s\');"""%(_unique_hash_,_email_,_code_,_comments_)
 		print query
 		cursor.execute(query)
+		conn.commit()
 
-	except:
+	except Exception as e:
 		print "Connection Failed,Informing client"
-		STATUS = FALSE
+		print e
+		STATUS = "FALSE"
 
-	return jsonify({'STATUS' , STATUS})
+	return jsonify({'STATUS' : STATUS})
 
 
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
 
