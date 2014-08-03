@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#save").click(function(){
 
-		var code = editor.getSession().getDocument().getValue();
+		var code = editor.getSession().getDocument().getAllLines().toString();
 		var unique_hash = document.getElementById("#hash");
 		var email = document.getElementById("#email");
 		var comments = document.getElementById("#comments");
