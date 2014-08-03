@@ -35,10 +35,8 @@ def save_code():
 	print _comments_
 	print _unique_hash_
 
-	#query =  """INSERT INTO data (hash,email,code,comments) VALUES(%s,%s,%s,%s);"""%(unique_hash,email,code,comments)
 	STATUS = "TRUE"
-	print "\n"
-	#print query
+	
 	print "\n"
 	try:
 		conn = psycopg2.connect(

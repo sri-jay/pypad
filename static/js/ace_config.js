@@ -72,6 +72,16 @@ $(document).ready(function(){
 		var email = $("#email").val();
 		var comments = $("#comments").val();
 
+		if(email == "jon@email.net")
+		{
+			alert("Enter Your Email Id please");
+			return;
+		}
+
+		$(this).removeClass("blue");
+		$(this).addClass("orange");
+		$(this).html('<i id="status" class="loading icon"></i>Saving');
+	
 		console.log(code);
 		console.log(unique_hash);
 		console.log(email);
@@ -83,11 +93,17 @@ $(document).ready(function(){
 			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 			success : function(reply){
 				if(reply['STATUS'] != 'TRUE'){
-					alert("Failer to enter data to DB");
+					alert("Failed to enter data to DB");
+					$("#save").removeClass("orange");
+					$("#save").html('<i id="status" class="checkmark icon"></i>Failed To Save');
+					$("#save").addClass("red");
 				}
 				else
 				{
 					console.log("Done");
+					$("#save").removeClass("orange");
+					$("#save").html('<i id="status" class="checkmark icon"></i>Saved');
+					$("#save").addClass("green");
 				}
 
 			}

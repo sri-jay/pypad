@@ -45,14 +45,14 @@
 			<br/>
 
 			<div class="ui icon fluid input">
-				<input type="email" id="email" required placeholder="Enter Your Email Id">
-				<i class="inverted mail icon red"></i>
+				<input type="email" id="email" value="jon@email.net" required placeholder="Enter Your Email Id">
+				<i id="email-prompt" class="inverted mail icon red" data-content="Please enter your email Id"></i>
 			</div>
 
 			<br/>
 			<br/>
 			<input id="hash" type="hidden" value="{{ url }}"/>
-			<button id="save" class="fluid ui button teal"><i class="save icon"></i>Save</button>
+			<button id="save" class="fluid ui button blue"><i id="status" class="save icon"></i>Save</button>
 		</div>
 	</div>
 	<!-- Buttons -->

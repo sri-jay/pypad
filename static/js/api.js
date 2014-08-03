@@ -6,6 +6,8 @@ $(document).ready(function(){
 		var email = document.getElementById("#email");
 		var comments = document.getElementById("#comments");
 
+		$(this).html('<i id="status" class="loading icon"></i>Saving');
+
 		console.log(code);
 		console.log(unique_hash);
 		console.log(email);
