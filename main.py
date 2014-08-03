@@ -26,8 +26,6 @@ def save_code():
 	comments = request.form['COMMENTS']
 	unique_hash = request.form['HASH']
 
-	print code,email,comments,unique_hash
-
 	STATUS = "TRUE"
 	try:
 		conn = psycopg2.connect(
