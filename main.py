@@ -44,5 +44,10 @@ def save_code():
 
 	except:
 		print "Connection Failed,Informing client"
-		return jsonify({'STATUS' ; 'FALSE'})
+		return jsonify({'STATUS' , 'FALSE'})
+
+
+
+if __name__ == "__main__":
+	app.run()
 
