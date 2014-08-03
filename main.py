@@ -38,7 +38,7 @@ def save_code():
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
-		query =  """INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"""%(unique_hash,email,code,comments)
+		query =  """INSERT INTO data (hash,email,code,comments) VALUES(\'%s\',\'%s\',\'%s\',\'%s\');"""%(unique_hash,email,code,comments)
 		print query
 		cursor.execute(query)
 
