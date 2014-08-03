@@ -28,6 +28,7 @@ def save_code():
 
 	print code,email,comments,unique_hash
 
+	STATUS = "TRUE"
 	try:
 		conn = psycopg2.connect(
 		database="dhgab48kaqk79",
@@ -39,14 +40,14 @@ def save_code():
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
-		print "INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\"");"%(unique_hash,email,code,comments)
-		cursor.execute("INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\"");"%(unique_hash,email,code,comments))
-
-		return jsonify({'STATUS' : 'TRUE'})
+		print "INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"%(unique_hash,email,code,comments)
+		cursor.execute("INSERT INTO data (hash,email,code,comments) VALUES(\"%s\",\"%s\",\"%s\",\"%s\");"%(unique_hash,email,code,comments))
 
 	except:
 		print "Connection Failed,Informing client"
-		return jsonify({'STATUS' , 'FALSE'})
+		STATUS = FALSE
+
+	return jsonify({'STATUS' , STATUS})
 
 
 
