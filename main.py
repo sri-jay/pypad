@@ -21,10 +21,10 @@ def code():
 
 @app.route("/save",methods=['POST'])
 def save_code():
-	code = request.form['CODE']
-	email = request.form['EMAIL']
-	comments = request.form['COMMENTS']
-	unique_hash = request.form['HASH']
+	code = str(request.form['CODE'])
+	email = str(request.form['EMAIL'])
+	comments = str(request.form['COMMENTS'])
+	unique_hash = str(request.form['HASH'])
 
 	STATUS = "TRUE"
 	try:
