@@ -14,7 +14,7 @@ $(document).ready(function(){
 	stdout.setFontSize(14);
 	stdout.setReadOnly(true);
 	var pos = 0;
-	
+
 	function outf(text) { 
 	    var mypre = document.getElementById("stdout"); 
 	    text = text.split("\n").filter(function(e){return e;});
@@ -64,4 +64,33 @@ $(document).ready(function(){
 		console.log("clicked");
 		$('#sidebar').sidebar('toggle')
 	}); 
+
+
+	$("#save").click(function(){
+		var code = editor.getSession().getDocument().getValue();
+		var unique_hash = $("#hash").val();
+		var email = $("#email").val();
+		var comments = $("#comments").val();
+
+		console.log(code);
+		console.log(unique_hash);
+		console.log(email);
+		console.log(comments);
+
+		$.ajax({
+			url : "http://dry-springs-9524.herokuapp.com/save",
+			type : "POST",
+			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
+			success : function(reply){
+				if(reply['STATUS'] != 'TRUE'){
+					alert("Failer to enter data to DB");
+				}
+				else
+				{
+					console.log("Done");
+				}
+
+			}
+		});
+	});	
 });

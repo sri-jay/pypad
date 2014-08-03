@@ -38,8 +38,8 @@
 		<hr>
 
 		<h4 class="ui header">Comments&nbsp;&nbsp;<i class="comment icon"></i></h4>
-		<form class="ui form blue">
-			<textarea>Any notes to take?</textarea>
+		<div class="ui form blue">
+			<textarea id="comments">Any notes to take?</textarea>
 
 			<br/>
 			<br/>
@@ -52,8 +52,8 @@
 			<br/>
 			<br/>
 			<input id="hash" type="hidden" value="{{ url }}"/>
-			<button id="save" type="submit" class="fluid ui button teal"><i class="save icon"></i>Save</button>
-		</form>
+			<button id="save" class="fluid ui button teal"><i class="save icon"></i>Save</button>
+		</div>
 	</div>
 	<!-- Buttons -->
 	
@@ -82,6 +82,5 @@
 <script src="{{ url_for('static',filename='js/ace-src-min-noconflict/ace.js')}}" type="text/javascript" charset="utf-8"></script>
 
 <script src="{{ url_for('static', filename='js/ace_config.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='js/api.js') }}" type="text/javascript"></script>
 	
 </html>
