@@ -88,7 +88,7 @@ $(document).ready(function(){
 		console.log(comments);
 
 		$.ajax({
-			url : "http://127.0.0.1:5000/save",
+			url : "http://dry-springs-9524.herokuapp.com/save",
 			type : "POST",
 			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 			success : function(reply){
