@@ -26,11 +26,17 @@
 		font-size: 250px;
 		margin-top:10%;
 		color:white;
-		-webkit-animation:title-animation 10s ease-in;
+		-webkit-animation:title-animation 5s ease-in;
 		
 	}
+	#go:hover{
+		opacity:1;
+		background-color: white;
+		color:black;
+	}
 	#go,hr{
-		-webkit-animation:go-animation 15s ease-out;
+		opacity:0.4;
+		-webkit-animation:go-animation 5s ease-out;
 	}
 
 	@-webkit-keyframes go-animation{
@@ -70,7 +76,7 @@
 		<hr>
 		<br>
 		<br>
-		<a href="http://127.0.0.1:5000/code"><div class="fluid orange massive ui button" id="go"><code>Go</code></div></a>
+		<a href="http://dry-springs-9524.herokuapp.com/code"class="fluid massive black ui button" id="go"><code id="msg">Go</code></a>
 
 	</div>
 </body>
