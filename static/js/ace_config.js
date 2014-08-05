@@ -5,8 +5,6 @@ $(document).ready(function(){
 	editor.setTheme("ace/theme/solarized_dark");
 	editor.getSession().setMode("ace/mode/python");
 	editor.setFontSize(14);
-	editor.getSession().getDocument().insertLines(0,["# Type Code here","print 'Hello, World!'"]);
-
 
 	var stdout = ace.edit("stdout");
 	stdout.setTheme("ace/theme/solarized_light");
@@ -28,7 +26,10 @@ $(document).ready(function(){
 	    return Sk.builtinFiles["files"][x];
 	}
 
-	$("#run").click(function(){
+	$("#run").click(run_code);
+	$("#canvasrun").click(run_code);
+	
+	function run_code(){
 
 		var code = editor.getSession().getDocument().getValue();
 		var output = $("#stdout");
@@ -42,7 +43,7 @@ $(document).ready(function(){
 		catch(e) {
 		   alert(e.toString())
 		}
-	});
+	}
 
 	$(function() {
 	    $('a[href*=#]:not([href=#])').click(function() {
@@ -88,7 +89,7 @@ $(document).ready(function(){
 		console.log(comments);
 
 		$.ajax({
-			url : "http://dry-springs-9524.herokuapp.com/save",
+			url : "http://127.0.0.1:5000/save",
 			type : "POST",
 			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 			success : function(reply){
