@@ -27,7 +27,7 @@
 		margin-top:10%;
 		color:white;
 		-webkit-animation:title-animation 5s ease-in;
-		
+		animation: title-animation 5s ease-in;
 	}
 	#go:hover{
 		opacity:1;
@@ -37,6 +37,7 @@
 	#go,hr{
 		opacity:0.4;
 		-webkit-animation:go-animation 5s ease-out;
+		animation:go-animation 5s ease-out;
 	}
 
 	@-webkit-keyframes go-animation{
@@ -66,6 +67,33 @@
 		}
 	}
 
+
+	@keyframes go-animation{
+		from{
+			filter:blur(200px);
+		}
+		to{
+			filter:blur(0);
+		}
+	}
+	@keyframes title-animation
+	{
+		from{
+			filter:blur(100px);
+			box-shadow: 500px 10px 500px 500px rgba(255, 255, 255, 3);
+		}
+		to{
+			filter:blur(0);
+		}
+	}
+	@keyframes move{
+		from{
+			margin-top: 10%;
+		}
+		to{
+			margin-top: 3%;
+		}
+	}
 	</style>
 </head>
 <body>

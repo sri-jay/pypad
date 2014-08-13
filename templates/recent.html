@@ -51,6 +51,26 @@
 		}
 	}
 
+	@keyframes feature-1-animate
+	{
+		from{
+			background-color: rgba(200, 50, 200,3);
+		}
+		to{
+			background-color: rgba(255, 20, 147,3);
+		}
+	}
+
+	@keyframes feature-2-animate
+	{
+		from{
+			background-color: rgba(75, 250, 50,1);
+		}
+		to{
+			background-color: rgba(250, 75, 150,1);
+		}
+	}
+
 	#body-content
 	{
 		height:100%;
@@ -103,6 +123,7 @@
 		height: 100vh;
 		width:100vw;
 		-webkit-animation: feature-1-animate 3s linear infinite alternate;
+		animation: feature-1-animate 3s linear infinite alternate;
 	}
 	#advert-1
 	{
@@ -135,6 +156,7 @@
 		width:100%;
 		margin-top:100vh;
 		-webkit-animation: feature-2-animate 5s linear infinite alternate;		
+		animation: feature-2-animate 5s linear infinite alternate;			
 	}
 	#advert-2
 	{
