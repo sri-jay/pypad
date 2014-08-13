@@ -29,7 +29,11 @@ def home():
 def get_all_codes():
 	try:
 		conn = psycopg2.connect(
-		)
+		database="dhgab48kaqk79",
+		user="wgciyahtsvsaxi",
+		password="8NIfTLHTetrg_xYjwmA_LKr36w",
+		host="ec2-54-225-135-30.compute-1.amazonaws.com",
+		port="5432")
 
 		cursor = conn.cursor()
 		query = """SELECT hash FROM data"""
@@ -61,7 +65,11 @@ def save_code():
 	print "\n"
 	try:
 		conn = psycopg2.connect(
-)
+		database="dhgab48kaqk79",
+		user="wgciyahtsvsaxi",
+		password="8NIfTLHTetrg_xYjwmA_LKr36w",
+		host="ec2-54-225-135-30.compute-1.amazonaws.com",
+		port="5432")
 
 		#get a cursor
 		print "Writing to DB"
@@ -84,7 +92,11 @@ def get_code(data):
 	print data
 	try:
 		conn = psycopg2.connect(
-)
+		database="dhgab48kaqk79",
+		user="wgciyahtsvsaxi",
+		password="8NIfTLHTetrg_xYjwmA_LKr36w",
+		host="ec2-54-225-135-30.compute-1.amazonaws.com",
+		port="5432")
 
 		cursor = conn.cursor()
 		query = """SELECT * FROM data where hash=\'%s\'"""%(code_hash)
