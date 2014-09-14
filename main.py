@@ -107,6 +107,8 @@ def get_code(data):
 	except Exception as e:
 		print e
 
+	code[2] = code[2].split(",")
+	code[2] = code[2].join("\n")
 	#return jsonify( {'CODE' : code[2],'EMAIL' : code[1],'COMMENTS' : code[3]} )
 	return render_template('view_code.html',comments=code[3],source=code[2],url=str(hashlib.sha224(str(random.random())).hexdigest()))
 
