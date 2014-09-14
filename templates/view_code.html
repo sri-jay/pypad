@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="{{ url_for('static', filename='js/skulpt.min.js') }}"type="text/javascript"></script>
+	<script src="{{ url_for('static', filename='js/skulpt-stdlib.js') }}"type="text/javascript"></script>
+
+
+	<!-- Semantic UI -->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/javascript/semantic.min.js"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.12.0/css/semantic.min.css" rel="stylesheet">
+	
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}" ></link>
+
+</head>
+<body>
+
+	<!-- Input and output areas -->
+	<div id='editor'></div>
+	<div id="stdout"></div>
+	<canvas id="stdcanvas"></canvas>
+
+	<!-- Sidebar -->
+	<div id="sidebar" class="ui very wide styled sidebar">
+		<h3 align="center" class="ui header">Welcome!</h3>
+
+		<hr>
+
+		<h4 class="ui header">Permalink to Code</h4>
+		<div class="ui action icon fluid input">
+		    <input onclick="this.select()" type="text" readonly value="http://127.0.0.1/get/{{ url }}">
+		    <i class="inverted url icon green"></i>
+		</div>
+
+		<br>
+		<hr>
+
+		<h4 class="ui header">Comments&nbsp;&nbsp;<i class="comment icon"></i></h4>
+		<div class="ui form blue">
+			<textarea id="comments">{{ comments }}</textarea>
+
+			<br/>
+			<br/>
+
+			<div class="ui icon fluid input">
+				<input type="email" id="email" value="jon@email.net" required placeholder="Enter Your Email Id">
+				<i id="email-prompt" class="inverted mail icon red" data-content="Please enter your email Id"></i>
+			</div>
+
+			<br/>
+			<br/>
+			<input id="hash" type="hidden" value="{{ url }}"/>
+			<button id="save" class="fluid ui button blue"><i id="status" class="save icon"></i>Save</button>
+		</div>
+	</div>
+	<!-- Buttons -->
+	
+	<div class="ui vertical right labeled icon tiny buttons" style="z-index:200;position:fixed;top:50%;right:4%">
+			<a href="#editor" class="ui white button" id="code">
+		        Code
+		        <i class="icon code"></i>
+		    </a>
+		    <a href="#stdout" class="ui white button" id="run">
+		        STDOUT
+		        <i class="icon play"></i>
+		    </a>
+		     <a href="#stdcanvas" class="ui white button" id="canvas">
+		        Canvas
+		        <i class="icon edit"></i>
+		    </a>
+		    <div class="ui white button" id="toggle_sidebar">
+		    	Settings
+		    	<i class="icon settings"></i>
+		    </div>
+	</div>
+	<!-- End Buttons -->
+
+</body>
+<!-- SCRIPTS AT BOTTOM TO INCREASE RENDER SPEED -->
+<script src="{{ url_for('static',filename='js/ace-src-min-noconflict/ace.js')}}" type="text/javascript" charset="utf-8"></script>
+
+<script src="{{ url_for('static', filename='js/ace_config.js') }}" type="text/javascript"></script>
+	
+</html>
