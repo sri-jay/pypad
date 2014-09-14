@@ -40,11 +40,11 @@ def get_all_codes():
 		print query
 		cursor.execute(query)
 		code = cursor.fetchall()
-		print code
+		print code.reverse()
 	except Exception as e:
 		print e
 
-	return jsonify( {'hashes' : code} )
+	return jsonify( {'hashes' : code.reverse()} )
 
 @app.route("/save",methods=['POST'])
 def save_code():
