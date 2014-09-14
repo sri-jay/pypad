@@ -36,7 +36,7 @@ def get_all_codes():
 		port="5432")
 
 		cursor = conn.cursor()
-		query = """SELECT hash FROM data"""
+		query = """SELECT hash,email FROM data"""
 		print query
 		cursor.execute(query)
 		code = cursor.fetchall()
