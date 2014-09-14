@@ -108,7 +108,7 @@ def get_code(data):
 		print e
 
 	code[2] = code[2].split(",")
-	code[2] = code[2].join("\n")
+	code[2] = "\n".join(code[2])
 	#return jsonify( {'CODE' : code[2],'EMAIL' : code[1],'COMMENTS' : code[3]} )
 	return render_template('view_code.html',comments=code[3],source=code[2],url=str(hashlib.sha224(str(random.random())).hexdigest()))
 
