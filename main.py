@@ -114,7 +114,7 @@ def get_code(data):
 		conn = connect_to_db()
 
 		cursor = conn.cursor()
-		query = """SELECT * FROM data where hash=\'%s\'"""%(code_hash)
+		query = """SELECT * FROM data where unique_hash=\'%s\'"""%(code_hash)
 		print query
 		cursor.execute(query)
 		code = cursor.fetchone()
