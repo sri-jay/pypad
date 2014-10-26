@@ -7,7 +7,23 @@ import psycopg2
 import json
 import urlparse
 
+# Setup url parse to read DB login data as environment string
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
 app = Flask(__name__, static_url_path = "")
+
+def connect_to_db():
+
+	db_connection = psycopg2.connect(
+		database=url.path[1:],
+		user=url.username,
+		password=url.password,
+		host=url.hostname,
+		port=url.port
+	)
+
+	return db_connection
 
 @app.route("/")
 def hello():
@@ -19,6 +35,7 @@ def code():
 	print "here"
 	print random.random()
 	unique_hash = str(hashlib.sha224(str(random.random())).hexdigest())
+
 	return render_template('main.html',url=unique_hash)
 
 @app.route("/home")
@@ -28,18 +45,22 @@ def home():
 @app.route("/get_all_codes",methods=['GET','POST'])
 def get_all_codes():
 	try:
-		conn = psycopg2.connect(
-		)
-
+		conn = connect_to_db()
 		cursor = conn.cursor()
+
 		query = """SELECT hash,email FROM data"""
+
 		print query
+
 		cursor.execute(query)
 		code = cursor.fetchall()
+
 		print code
+
 	except Exception as e:
 		print e
 
+	conn.close()
 	return jsonify( {'hashes' : code} )
 
 @app.route("/save",methods=['POST'])
@@ -60,19 +81,24 @@ def save_code():
 	
 	print "\n"
 	try:
-		conn = psycopg2.connect(
-	)
+
+		# Get connection object
+		conn = connect_to_db()
 
 		#get a cursor
 		print "Writing to DB"
 		cursor = conn.cursor()
+
+		# create th query
 		query =  """INSERT INTO data VALUES(\'%s\',\'%s\',\'%s\',\'%s\');"""%(_unique_hash_,_email_,_code_,_comments_)
 		print query
+
+		# Execute query
 		cursor.execute(query)
 		conn.commit()
 
 	except Exception as e:
-		print "Connection Failed,Informing client"
+		print "DB opration faliled"
 		print e
 		STATUS = "FALSE"
 
@@ -83,9 +109,8 @@ def get_code(data):
 	code_hash = data
 	print data
 	try:
-		conn = psycopg2.connect(
-		)
-
+		conn = connect_to_db()
+		
 		cursor = conn.cursor()
 		query = """SELECT * FROM data where hash=\'%s\'"""%(code_hash)
 		print query
