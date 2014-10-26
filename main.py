@@ -15,6 +15,7 @@ app = Flask(__name__, static_url_path = "")
 
 def connect_to_db():
 
+	print "Creating connection object."
 	db_connection = psycopg2.connect(
 		database=url.path[1:],
 		user=url.username,
@@ -48,7 +49,7 @@ def get_all_codes():
 		conn = connect_to_db()
 		cursor = conn.cursor()
 
-		query = """SELECT hash,email FROM data"""
+		query = """SELECT unique_hash,email FROM data"""
 
 		print query
 
@@ -65,6 +66,7 @@ def get_all_codes():
 
 @app.route("/save",methods=['POST'])
 def save_code():
+	print "Saving code"
 	_code_ = request.form['CODE']
 	_email_ = request.form['EMAIL']
 	_comments_ = request.form['COMMENTS']
@@ -98,7 +100,7 @@ def save_code():
 		conn.commit()
 
 	except Exception as e:
-		print "DB opration faliled"
+		print "DB operation faliled"
 		print e
 		STATUS = "FALSE"
 
@@ -110,7 +112,7 @@ def get_code(data):
 	print data
 	try:
 		conn = connect_to_db()
-		
+
 		cursor = conn.cursor()
 		query = """SELECT * FROM data where hash=\'%s\'"""%(code_hash)
 		print query
