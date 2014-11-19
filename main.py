@@ -43,7 +43,7 @@ def send_mail(recipient,hash_code):
 	mail = Mail(app)
 
 	msg = Message("Your python snippet",sender="sriduth.jayhari@gmail.com",recipients=[recipient])
-	msg.body = render_template("email.html",emailid=recipient.split('@')[0],link="http://pypad.herokuapp.com/get/"+hash_code)
+	msg.html = render_template("email.html",emailid=recipient.split('@')[0],link="http://pypad.herokuapp.com/get/"+hash_code)
 
 	mail.send(msg)
 
