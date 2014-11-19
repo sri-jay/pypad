@@ -156,7 +156,7 @@ def get_code(data):
 
 
 	#return jsonify( {'CODE' : code[2],'EMAIL' : code[1],'COMMENTS' : code[3]} )
-	return render_template('view_code.html',comments=code[3],source=code[2].replace(',','\",\"'),url=str(hashlib.sha224(str(random.random())).hexdigest()))
+	return render_template('view_code.html',comments=code[3],source=code[2].replace(',',' ,'),url=str(hashlib.sha224(str(random.random())).hexdigest()))
 
 if __name__ == "__main__":
 	app.run(debug=True)
