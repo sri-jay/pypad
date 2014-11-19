@@ -41,18 +41,10 @@ def connect_to_db():
 
 def send_mail(recipient,hash_code):
 	mail = Mail(app)
+
 	msg = Message("Your python snippet",sender="sriduth.jayhari@gmail.com",recipients=[recipient])
-	url = "http://pypad.herokuapp.com/get/"+hash_code
-	msg.html = """
-		Hi!\n
-		Thanks for using <a link='pypad.herokuapp.com'>pypad</a>
-		Here is a link to your code <a href='%s'>%s</a>
-		Have Fun!
-
-		Regards,
-		pypad
-	"""%(url,url)
-
+	msg.html = render_template("email.html",emailid=recipient.split('@')[0],link="http://pypad.herokuapp.com/get/"+hash_code)
+	
 	mail.send(msg)
 
 
