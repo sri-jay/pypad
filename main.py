@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, make_response
+from flask_mail import Mail,Message
 from subprocess import Popen, PIPE, STDOUT
 import os
 import random
@@ -12,6 +13,18 @@ urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
 app = Flask(__name__, static_url_path = "")
+app.config.update(dict(
+	MAIL_SERVER = "smtp.gmail.com",
+	MAIL_PORT = 465,
+	MAIL_USE_TLS = False,
+	MAIL_USE_SSL = True,
+	MAIL_USERNAME = 'pypadapp@gmail.com',
+	MAIL_PASSWORD = 'Q!W@E#R$T%Y^'
+))
+
+app.config.from_object(__name__)
+
+
 
 def connect_to_db():
 
@@ -25,6 +38,23 @@ def connect_to_db():
 	)
 
 	return db_connection
+
+def send_mail(recipient,hash_code):
+	mail = Mail(app)
+	msg = Message("Your python snippet",sender="sriduth.jayhari@gmail.com",recipients=[recipient])
+	url = "http://pypad.herokuapp.com/get/"+hash_code
+	msg.html = """
+		Hi!\n
+		Thanks for using <a link='pypad.herokuapp.com'>pypad</a>
+		Here is a link to your code <a href='%s'>%s</a>
+		Have Fun!
+
+		Regards,
+		pypad
+	"""%(url,url)
+
+	mail.send(msg)
+
 
 @app.route("/")
 def hello():
@@ -80,7 +110,7 @@ def save_code():
 	print _unique_hash_
 
 	STATUS = "TRUE"
-	
+	send_mail(_email_,_unique_hash_)	
 	print "\n"
 	try:
 
@@ -99,6 +129,7 @@ def save_code():
 		cursor.execute(query)
 		conn.commit()
 
+
 	except Exception as e:
 		print "DB operation faliled"
 		print e
@@ -108,6 +139,7 @@ def save_code():
 
 @app.route("/get/<data>",methods=['GET','POST'])
 def get_code(data):
+	print "Here"
 	code_hash = data
 	print data
 	try:
@@ -124,7 +156,7 @@ def get_code(data):
 
 
 	#return jsonify( {'CODE' : code[2],'EMAIL' : code[1],'COMMENTS' : code[3]} )
-	return render_template('view_code.html',comments=code[3],source=code[2].replace(',','\n'),url=str(hashlib.sha224(str(random.random())).hexdigest()))
+	return render_template('view_code.html',comments=code[3],source=code[2].replace(',','\\,'),url=str(hashlib.sha224(str(random.random())).hexdigest()))
 
 if __name__ == "__main__":
 	app.run(debug=True)

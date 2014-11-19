@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#save").click(function(){
 
-		var code = editor.getSession().getDocument().getAllLines().toString();
+		var code = editor.getSession().getDocument().getAllLines().join("~");
 		var unique_hash = document.getElementById("#hash");
 		var email = document.getElementById("#email");
 		var comments = document.getElementById("#comments");
@@ -14,7 +14,8 @@ $(document).ready(function(){
 		console.log(comments);
 
 		$.ajax({
-			url : "http://dry-springs-9524.herokuapp.com/save",
+			//url : "http://dry-springs-9524.herokuapp.com/save",
+			url : "http://pypad.herokuapp.com/save",
 			type : "POST",
 			data : {CODE : code,HASH:unique_hash,EMAIL:email,COMMENTS:comments},
 			success : function(reply){

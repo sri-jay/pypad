@@ -45,21 +45,7 @@ $(document).ready(function(){
 		}
 	}
 
-	$(function() {
-	    $('a[href*=#]:not([href=#])').click(function() {
-	        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-	             var target = $(this.hash);
-	             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	             if (target.length) {
-	             $('html,body').animate({
-	             scrollTop: target.offset().top,
-	             scrollLeft: target.offset().left,
-	            }, 250);
-	            return false;
-	            }
-	        }
-	    }); 
-	});
+
 
 	$("#toggle_sidebar").click(function (){
 		console.log("clicked");
@@ -68,7 +54,7 @@ $(document).ready(function(){
 
 
 	$("#save").click(function(){
-		var code = editor.getSession().getDocument().getAllLines().toString();
+		var code = editor.getSession().getDocument().getValue();
 		var unique_hash = $("#hash").val();
 		var email = $("#email").val();
 		var comments = $("#comments").val();
