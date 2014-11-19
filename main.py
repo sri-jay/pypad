@@ -18,8 +18,8 @@ app.config.update(dict(
 	MAIL_PORT = 465,
 	MAIL_USE_TLS = False,
 	MAIL_USE_SSL = True,
-	MAIL_USERNAME = 'pypadapp@gmail.com',
-	MAIL_PASSWORD = 'Q!W@E#R$T%Y^'
+	MAIL_USERNAME = os.environ['EMAIL_USERNAME'],
+	MAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 ))
 
 app.config.from_object(__name__)
